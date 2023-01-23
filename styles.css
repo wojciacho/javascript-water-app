@@ -1,0 +1,158 @@
+@import url("https://fonts.googleapis.com/css?family=Questrial&display=swap");
+
+:root {
+  --bcg-color: lightskyblue;
+  --glass-color: white;
+  --glass-border: 4px solid rgb(0, 183, 255);
+  --glass-text: rgb(0, 183, 255);
+  --small-glass-bcg: rgba(255, 255, 255, 0.9);
+  --small-glass-full: rgb(0, 108, 175);
+  --percentage: rgb(0, 183, 255);
+  --tags: black;
+}
+
+.dark-theme {
+  --bcg-color: black;
+  --glass-color: white;
+  --glass-border: 4px solid darkgray;
+  --glass-text: black;
+  --small-glass-bcg: rgba(255, 255, 255, 0.9);
+  --small-glass-full: black;
+  --percentage: white;
+  --tags: white;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Questrial", sans-serif;
+  background-color: var(--bcg-color);
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-bottom: 40px;
+}
+
+h1,
+h3,
+p {
+  color: var(--tags);
+}
+
+h1 {
+  margin: 10px 0 0;
+}
+
+h3 {
+  margin: 10px 0;
+}
+
+.dark-mode {
+  right: 70px;
+  top: 20px;
+  position: absolute;
+  font-size: 15px;
+  border-radius: 5px;
+  background-color: white;
+  cursor: pointer;
+  border: 0;
+  padding: 5px 10px;
+  font-weight: bold;
+  color: black;
+}
+
+.dark-mode:hover {
+  transform: scale(0.95);
+}
+
+.glass {
+  background-color: var(--glass-color);
+  border: var(--glass-border);
+  color: var(--glass-text);
+  border-radius: 0 0 40px 40px;
+  height: 350px;
+  width: 150px;
+  margin: 30px 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.glass.small-glass {
+  width: 50px;
+  height: 95px;
+  border-radius: 0 0 15px 15px;
+  background-color: var(--small-glass-bcg);
+  cursor: pointer;
+  font-size: 14px;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin: 5px;
+  transition: 0.3s ease;
+}
+
+.glasses {
+  display: flex;
+  flex-wrap: wrap;
+  width: 480px;
+  align-items: center;
+  justify-content: center;
+}
+
+.glass.small-glass.full {
+  background-color: var(--small-glass-full);
+  color: var(--glass-color);
+}
+
+.remained {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  flex-direction: column;
+  flex: 1;
+  transition: 0.3 ease;
+}
+
+.liters {
+  font-size: 20px;
+}
+
+small {
+  font-size: 12px;
+}
+
+.percentage {
+  background-color: var(--small-glass-full);
+  color: var(--percentage);
+  display: flex;
+  font-size: 30px;
+  align-items: center;
+  justify-content: center;
+  height: 0;
+  transition: 0.3s ease;
+}
+
+.text {
+  text-align: center;
+  margin: 0 0 5px;
+  color: var(--tags);
+  font-weight: bold;
+}
+
+@media (max-width: 500px) {
+  .glasses {
+    max-width: 250px;
+  }
+
+  .dark-mode {
+    left: 0;
+    top: 0;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+  }
+}
