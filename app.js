@@ -7,6 +7,25 @@ const smallGlass = document.querySelectorAll(".small-glass"),
 
 h3.innerText = "Goal: 4 Liters";
 
+const ls = () => {
+  let storagedItems = localStorage.getItem("savedItems");
+  console.log(storagedItems);
+  const arr = storagedItems.split(",");
+  console.log(arr.length);
+  if (storagedItems === null || storagedItems === [] || !storagedItems) {
+    storagedItems = [];
+    return localStorage.setItem("savedItems", lsArray);
+  } else {
+    smallGlass.forEach((glass, indx) => {
+      if (indx < arr.length) {
+        glass.classList.add("full");
+        lsArray.push(indx);
+      }
+    });
+  }
+  updateGlass();
+};
+
 const updateGlass = () => {
   const full = document.querySelectorAll(".small-glass.full").length;
   const total = smallGlass.length;
@@ -28,7 +47,9 @@ const updateGlass = () => {
   }
 };
 
-const drinkedGlass = (index) => {
+let lsArray = [];
+
+const drankGlass = (index) => {
   if (index === 15 && smallGlass[index].classList.contains("full")) {
     index--;
   } else if (
@@ -37,13 +58,17 @@ const drinkedGlass = (index) => {
   ) {
     index--;
   }
+  lsArray = [];
   smallGlass.forEach((glass, indx) => {
     if (indx <= index) {
       glass.classList.add("full");
+      lsArray.push(indx);
+      console.log(lsArray);
     } else {
       glass.classList.remove("full");
     }
   });
+  localStorage.setItem("savedItems", lsArray);
   updateGlass();
 };
 
@@ -51,9 +76,11 @@ updateGlass();
 
 smallGlass.forEach((item, index) => {
   item.addEventListener("click", () => {
-    drinkedGlass(index);
+    drankGlass(index);
   });
 });
+
+ls();
 
 let darkMode = localStorage.getItem("dark-mode");
 
